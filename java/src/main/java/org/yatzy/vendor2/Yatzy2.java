@@ -29,39 +29,24 @@ public class Yatzy2 implements YatzyCalculator {
 
     @Override
     public int score(List<Integer> dice, String category) {
-        switch (category) {
-            case "chance":
-                return chance(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "yatzy":
-                return yatzy(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "ones":
-                return ones(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "twos":
-                return twos(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "threes":
-                return threes(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "fours":
-                return new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).fours();
-            case "fives":
-                return new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).fives();
-            case "sixes":
-                return new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).sizes();
-            case "pair":
-                return score_pair(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "twopairs":
-                return two_pair(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "threeofakind":
-                return three_of_a_kind(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "fourofakind":
-                return four_of_a_kind(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "smallstraight":
-                return smallStraight(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "largestraight":
-                return largeStraight(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-            case "fullhouse":
-                return fullHouse(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
-        }
-        return 0;
+        return switch (category) {
+            case "chance" -> chance(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "yatzy" -> yatzy(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "ones" -> ones(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "twos" -> twos(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "threes" -> threes(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "fours" -> new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).fours();
+            case "fives" -> new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).fives();
+            case "sixes" -> new Yatzy2(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4)).sizes();
+            case "pair" -> score_pair(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "twopairs" -> two_pair(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "threeofakind" -> three_of_a_kind(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "fourofakind" -> four_of_a_kind(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "smallstraight" -> smallStraight(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "largestraight" -> largeStraight(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            case "fullhouse" -> fullHouse(dice.get(0), dice.get(1), dice.get(2), dice.get(3), dice.get(4));
+            default -> 0;
+        };
     }
 
     public static int chance(int d1, int d2, int d3, int d4, int d5)

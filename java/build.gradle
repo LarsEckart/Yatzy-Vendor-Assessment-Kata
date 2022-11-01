@@ -21,6 +21,12 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 mainClassName = 'org.yatzy.cli.CliAdapterYatzy1'
 
 jar {
@@ -31,6 +37,10 @@ jar {
     }
 }
 
-test {
-    useJUnitPlatform()
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.9.0')
+        }
+    }
 }
